@@ -1,0 +1,1 @@
+package com.study.dao;import com.study.dao.base.IGeneralORMDao;import com.study.model.Dictionary;public interface IDictionaryDao extends IGeneralORMDao<Dictionary, Long> {	public Dictionary getByWord(final String word);}

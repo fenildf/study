@@ -1,0 +1,1 @@
+package com.study.dao;import com.study.dao.base.IGeneralORMDao;import com.study.model.Book;public interface IBookDao extends IGeneralORMDao<Book, Long> {}

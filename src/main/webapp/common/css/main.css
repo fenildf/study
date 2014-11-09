@@ -1,0 +1,22 @@
+@CHARSET "UTF-8";
+
+body {
+	font-family: Verdana, Arial;
+}
+
+.text-error {
+	color: #b94a48;
+}
+
+.content {
+	text-indent: 2em;
+	overflow: auto;
+	padding: 20px;
+}
+
+.content p {
+	word-wrap: break-word;
+	font-size: 20px;
+	line-height: 48px;
+	overflow: hidden;
+}
