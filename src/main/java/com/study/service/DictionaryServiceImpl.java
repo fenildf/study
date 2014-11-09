@@ -1,5 +1,7 @@
 package com.study.service;
 
+import java.util.List;
+
 import javax.annotation.Resource;
 import javax.inject.Named;
 
@@ -24,4 +26,16 @@ public class DictionaryServiceImpl extends AbstractBaseService<Dictionary> imple
 		return dao.getByWord(word);
 	}
 
+
+	public List<Dictionary> list(int page, int size){
+		IDictionaryDao dao = (IDictionaryDao) this.getGeneralDao();
+		return dao.list(page, size);
+	}
+	
+
+	public int count(){
+		IDictionaryDao dao = (IDictionaryDao) this.getGeneralDao();
+		return dao.count();
+	}
+    
 }

@@ -1,1 +1,1 @@
-package com.study.dao;import com.study.dao.base.IGeneralORMDao;import com.study.model.Dictionary;public interface IDictionaryDao extends IGeneralORMDao<Dictionary, Long> {	public Dictionary getByWord(final String word);}
+package com.study.dao;import java.util.List;import com.study.dao.base.IGeneralORMDao;import com.study.model.Dictionary;public interface IDictionaryDao extends IGeneralORMDao<Dictionary, Long> {	public Dictionary getByWord(final String word);	public List<Dictionary> list(int page, int size);		public int count();}

@@ -20,3 +20,21 @@ body {
 	line-height: 48px;
 	overflow: hidden;
 }
+
+a, a:hover {
+	text-decoration: none;
+	text-transform: none;
+}
+
+.pagination {
+	width: 100%;
+	text-align: center
+}
+
+.pagination > ul > li.btn{
+	padding:0;
+}
+.pagination ul li a{
+	padding:9px 14px;
+	display: inline-block;
+}

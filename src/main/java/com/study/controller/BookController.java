@@ -37,6 +37,7 @@ public class BookController {
 
 		Book book = bookService.getByPrimaryKey(id);
 		model.addAttribute("book", book);
+		model.addAttribute("title", book.getTitle());
 
 		return "book/show";
 	}

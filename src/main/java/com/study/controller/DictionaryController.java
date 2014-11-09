@@ -3,10 +3,14 @@ package com.study.controller;
 import java.util.List;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 
+import org.displaytag.tags.TableTagParameters;
+import org.displaytag.util.ParamEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.ServletRequestBindingException;
+import org.springframework.web.bind.ServletRequestUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -23,10 +27,20 @@ public class DictionaryController {
 	private IDictionaryService dictionaryService;
 
 	@RequestMapping(value = "list", method = RequestMethod.GET)
-	public String index(Model model) throws ServletRequestBindingException {
-
-		List<Dictionary> dictionarys = dictionaryService.findAll();
-		model.addAttribute("dictionarys", dictionarys);
+	public String index(Model model, 
+			HttpServletRequest request,
+			@RequestParam(value="size", required=false, defaultValue="10") int size) throws ServletRequestBindingException {
+        
+		String pageIndexName = new ParamEncoder("dictionary").encodeParameterName(TableTagParameters.PARAMETER_PAGE);
+        int page = ServletRequestUtils.getIntParameter(request, pageIndexName, 1);
+        
+		List<Dictionary> dictionaries = dictionaryService.list(page, size);
+		int total = dictionaryService.count();
+		
+		
+		
+		model.addAttribute("dictionaries", dictionaries);
+		model.addAttribute("total", total);
 
 		return "dictionary/list";
 	}
