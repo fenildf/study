@@ -165,7 +165,9 @@ public class AbstractBaseORMDao<T extends AbstractBaseModel, PK extends Serializ
      */
     @Transactional(propagation = Propagation.REQUIRED)
     public void saveOrUpdate(final T entity) {
-    	entity.setCreateTime(new Date());
+    	if(entity.getId()==null){
+    		entity.setCreateTime(new Date());
+    	}
     	entity.setUpdateTime(new Date());
         getHibernateTemplate().saveOrUpdate(entity);
 
